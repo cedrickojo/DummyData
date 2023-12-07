@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Data Generator</title>
+</head>
+<body>
+    <h1>Fake Data Generator</h1>
+    <div id = "subtext">
+        <p>Numbers variate to numbers</p>
+        <p>Letters variate to letters (case sensitive)</p>
+        <p>Slider selects the first "n" characters that don't change</p>
+        <p>Use <span style="color:#9c27b0; font-weight:bold">AI checkbox</span> to input a description rather than a sample</p>
+    </div>
+    <form id="dataForm">
+        <div id="columns">
+            <div class = "column">
+                <input type="checkbox" class="column-checkbox" onchange="toggleCheckbox(this)">
+                <input type="text" name="columnName[]" placeholder="Column Name">
+                <input type="text" name="sampleData[]" placeholder="Sample Data" oninput="updateSlider(this)">
+                <input type="range" name="slider[]" min="0" max="0" value="0" oninput="updateNumber(this)">
+                <output class="slider-output">0</output>
+                <i class="fas fa-sync-alt refresh-icon" style="display: none" onclick="handleRefreshClick(this)"></i>
+                <p class="ai-Preview" style="display:none"></p>
+            </div>
+        </div>
+        <button id = "newColumn" type="button" onclick="addColumn()">Add Column</button>
+        <button type="button" id="removeColumnBtn">Remove Column</button>
+        <br>
+        <div id="generatorSection">
+            <h5>NUMBER OF ROWS FOR EXPORT</h5>
+            <br>
+            <input type="number" id = "numRows" name="rowCount" placeholder="Number of Rows">
+            <button id = "submit" type="submit">Generate CSV</button>
+        </div>
+    </form>
+
+    <script src="app.js"></script>
+</body>
+</html>
